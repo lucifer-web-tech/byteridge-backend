@@ -88,7 +88,7 @@ async function audit(pagenum) {
     const query = [{
         "$facet": {
             "users": [
-                { $skip: pagenum - 1 }, { $limit: 10 }, {
+                { $skip: (pagenum - 1) * 5 }, { $limit: 5 }, {
                     $addFields: {
                         identifier: { $toString: "$_id" }
                     }
